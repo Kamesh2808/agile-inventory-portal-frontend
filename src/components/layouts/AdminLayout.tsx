@@ -139,11 +139,9 @@ const AdminLayout = ({ children, title }: AdminLayoutProps) => {
       <div className="flex-1 flex flex-col">
         <header className="h-16 border-b border-border bg-card flex items-center justify-between px-4 md:px-6">
           <div className="flex items-center">
-            <SheetTrigger asChild className="md:hidden mr-2">
-              <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(true)}>
-                <Menu size={20} />
-              </Button>
-            </SheetTrigger>
+            <Button variant="ghost" size="icon" className="md:hidden mr-2" onClick={() => setIsMobileMenuOpen(true)}>
+              <Menu size={20} />
+            </Button>
             <h1 className="text-xl font-bold">{title}</h1>
           </div>
           <div className="flex items-center space-x-2">
