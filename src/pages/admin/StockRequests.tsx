@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import AdminLayout from "@/components/layouts/AdminLayout";
 import {
@@ -31,7 +30,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-// Mock data
+import { type Status } from "@/components/common/StatusBadge";
+
 const initialRequests = [
   {
     id: 1,
@@ -40,7 +40,7 @@ const initialRequests = [
     product: "Smartphone X",
     quantity: 15,
     requestDate: "2025-04-22",
-    status: "pending",
+    status: "pending" as Status,
     notes: "Urgent request for weekend promotion"
   },
   {
@@ -50,7 +50,7 @@ const initialRequests = [
     product: "Laptop Pro",
     quantity: 5,
     requestDate: "2025-04-21",
-    status: "approved",
+    status: "approved" as Status,
     notes: ""
   },
   {
@@ -60,7 +60,7 @@ const initialRequests = [
     product: "T-shirt Basic",
     quantity: 50,
     requestDate: "2025-04-20",
-    status: "rejected",
+    status: "rejected" as Status,
     notes: "Out of stock at warehouse"
   },
   {
@@ -70,7 +70,7 @@ const initialRequests = [
     product: "Wireless Headphones",
     quantity: 10,
     requestDate: "2025-04-20",
-    status: "pending",
+    status: "pending" as Status,
     notes: ""
   },
   {
@@ -80,7 +80,7 @@ const initialRequests = [
     product: "Coffee Premium",
     quantity: 20,
     requestDate: "2025-04-19",
-    status: "completed",
+    status: "completed" as Status,
     notes: "Delivered on 2025-04-24"
   },
 ];
@@ -95,33 +95,29 @@ const StockRequests = () => {
   const [rejectionReason, setRejectionReason] = useState("");
   const { toast } = useToast();
 
-  // Open request details dialog
   const handleViewClick = (request: any) => {
     setCurrentRequest(request);
     setIsDetailsOpen(true);
   };
 
-  // Open approve request dialog
   const handleApproveClick = (request: any) => {
     setCurrentRequest(request);
     setApprovalNotes("");
     setIsApproveOpen(true);
   };
 
-  // Open reject request dialog
   const handleRejectClick = (request: any) => {
     setCurrentRequest(request);
     setRejectionReason("");
     setIsRejectOpen(true);
   };
 
-  // Approve request
   const handleApproveRequest = () => {
     const updatedRequests = requests.map((request) => {
       if (request.id === currentRequest.id) {
         return {
           ...request,
-          status: "approved",
+          status: "approved" as Status,
           notes: approvalNotes ? approvalNotes : request.notes,
         };
       }
@@ -137,13 +133,12 @@ const StockRequests = () => {
     });
   };
 
-  // Reject request
   const handleRejectRequest = () => {
     const updatedRequests = requests.map((request) => {
       if (request.id === currentRequest.id) {
         return {
           ...request,
-          status: "rejected",
+          status: "rejected" as Status,
           notes: rejectionReason,
         };
       }
@@ -160,7 +155,6 @@ const StockRequests = () => {
     });
   };
 
-  // Filter requests by status
   const [statusFilter, setStatusFilter] = useState("all");
   
   const filteredRequests = requests.filter((request) => {
@@ -256,7 +250,6 @@ const StockRequests = () => {
         </CardContent>
       </Card>
 
-      {/* Request Details Dialog */}
       <Dialog open={isDetailsOpen} onOpenChange={setIsDetailsOpen}>
         <DialogContent className="max-w-md">
           <DialogHeader>
@@ -304,7 +297,6 @@ const StockRequests = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Approve Request Dialog */}
       <Dialog open={isApproveOpen} onOpenChange={setIsApproveOpen}>
         <DialogContent>
           <DialogHeader>
@@ -353,7 +345,6 @@ const StockRequests = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Reject Request Dialog */}
       <Dialog open={isRejectOpen} onOpenChange={setIsRejectOpen}>
         <DialogContent>
           <DialogHeader>

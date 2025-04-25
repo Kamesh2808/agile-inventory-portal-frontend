@@ -1,7 +1,7 @@
 
 import { Badge } from "@/components/ui/badge";
 
-type Status = "pending" | "approved" | "rejected" | "completed" | "in-progress" | "cancelled" | "low" | "medium" | "high" | "critical";
+export type Status = "pending" | "approved" | "rejected" | "completed" | "in-progress" | "cancelled" | "low" | "medium" | "high" | "critical";
 
 type StatusBadgeProps = {
   status: Status;
