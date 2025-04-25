@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Plus, Pencil, Trash, Eye } from "lucide-react";
+import { Plus, Pencil, Trash, Eye, Package } from "lucide-react";
 import {
   Dialog,
   DialogContent,
